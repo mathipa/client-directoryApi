@@ -35,14 +35,14 @@ namespace WebApplication1.Controllers
             try
             {
                 string query = @"insert into dbo.ClientInfo values 
-                    (
-                        '" + client.FirstName+ @"'
-                       ,'" + client.LastName + @"'
-                       ,'" + client.MobileNumber + @"'
-                       ,'" + client.IdNumber + @"'
-                       ,'" + client.PhysicalAddress + @"'
-                    )
-                    ";
+                (
+                    '" + client.FirstName+ @"'
+                    ,'" + client.LastName + @"'
+                    ,'" + client.MobileNumber + @"'
+                    ,'" + client.IdNumber + @"'
+                    ,'" + client.PhysicalAddress + @"'
+                )
+                ";
 
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ClientInfoDB"].ConnectionString))
@@ -53,7 +53,6 @@ namespace WebApplication1.Controllers
                     da.Fill(table);
                 }
                 return "Client Added Successfully!";
-
             }
             catch
             {
@@ -66,16 +65,15 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                string query = @"update dbo.ClientInfo set 
-                                FirstName = '" + client.FirstName + @"'
-                                ,LastName = '" + client.LastName + @"'
-                                ,MobileNumber = '" + client.MobileNumber + @"'
-                                ,FirstName = '" + client.FirstName + @"'
-                                ,IdNumber = '" + client.IdNumber + @"'
-                                ,PhysicalAddress ='" + client.PhysicalAddress + @"'
-
-                                where ClientId=" + client.ClientId+@"
-                                ";
+                string query = @"
+                update dbo.ClientInfo set 
+                FirstName='" + client.FirstName + @"'
+                ,LastName='" + client.LastName + @"'
+                ,MobileNumber='" + client.MobileNumber + @"'
+                ,IdNumber='" + client.IdNumber + @"'
+                ,PhysicalAddress ='" + client.PhysicalAddress + @"'
+                where ClientId=" + client.ClientId + @"
+                ";
 
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ClientInfoDB"].ConnectionString))
@@ -86,15 +84,12 @@ namespace WebApplication1.Controllers
                     da.Fill(table);
                 }
                 return "Client Updated Successfully!";
-
             }
             catch
             {
                 return "Failed to Update!";
             }
         }
-
-
 
         //Delete Client
         public string Delete(int id)
