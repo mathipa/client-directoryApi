@@ -96,7 +96,7 @@ namespace WebApplication1.Controllers
         {
             try
             {
-                string query = @"delete from dbo.ClientInfo where ClientId = '" + id + @" ";
+                string query = @"delete from dbo.ClientInfo where ClientId=" + id + @" ";
 
                 DataTable table = new DataTable();
                 using (var con = new SqlConnection(ConfigurationManager.ConnectionStrings["ClientInfoDB"].ConnectionString))
@@ -107,7 +107,6 @@ namespace WebApplication1.Controllers
                     da.Fill(table);
                 }
                 return "Client Deleted Successfully!";
-
             }
             catch
             {
